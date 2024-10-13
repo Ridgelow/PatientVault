@@ -4,22 +4,82 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="homestyle.css" />
+    <style>
+      /* Inline CSS for the login popup */
+      .login-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #5867EF; /* Match the website's background color */
+        border: 2px solid #5867EF; /* Lighter purple border */
+        border-radius: 10px;
+        padding: 20px;
+        z-index: 1000;
+        display: none; /* Hidden by default */
+        color: white; /* Text color */
+        font-family: "Outfit", Helvetica, sans-serif; /* Font style */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Slight shadow for depth */
+      }
+
+      .login-popup input {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc; /* Light border */
+        border-radius: 5px;
+        font-size: 16px; /* Font size */
+        color: #000; /* Text color */
+        background-color: #f0f0f0; /* Light background for input fields */
+      }
+
+      .login-popup button {
+        padding: 10px;
+        background-color: #28a745; /* Green background */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px; /* Font size */
+        width: 100%; /* Full width */
+      }
+
+      .login-popup button:hover {
+        background-color: #218838; /* Darker green on hover */
+      }
+
+      /* Dimmed background when popup is active */
+      .dimmed-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Dark background with opacity */
+        z-index: 900; /* Just below the popup */
+        display: none; /* Hidden by default */
+      }
+
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <div class="desktop">
       <div class="div">
         <div class="group">
           <div class="text-wrapper">Services</div>
-          <a href="index.html" class="login-link">
+          <a href="#" class="login-link" onclick="showLoginPopup()">
             <div class="text-wrapper-2">Login</div>
           </a>
           
-          <a href="index.html" class="start-now-link">
+          <a href="#" class="start-now-link" onclick="showLoginPopup()">
             <div class="overlap-group">
-              <a href="index.html" class="start-now-link">
-                <div class="text-wrapper-3">Start Now</div>
-              </a>
-              
+              <div class="text-wrapper-3">Start Now</div>
             </div>
           </a>
           
@@ -28,11 +88,9 @@
         <div class="component">
           <p class="own-your-medical">
             <span class="span">Own your medical records, securely</span>
-            <span class="text-wrapper-6">Access health data anytime, anywhere </span>
+            <span class="text-wrapper-6">Access health data anytime, anywhere</span>
           </p>
-          <div class="frame-wrapper">
-           
-          </div>
+          <div class="frame-wrapper"></div>
           <div class="secure-patient-data">Secure<br />Patient<br />Data.</div>
           <img class="object-other" src="https://c.animaapp.com/XFA4hqja/img/object-other-13-1@2x.png" />
         </div>
@@ -55,12 +113,11 @@
         <div class="text-wrapper-14">Decentralized Storage</div>
         <div class="overlap">
           <div class="overlap-wrapper">
-            <a href="index.html" class="learn-more-link">
+            <a href="#" class="learn-more-link" onclick="showLoginPopup()">
               <div class="overlap-2">
                 <p class="text-wrapper-15">Learn more about our services</p>
               </div>
             </a>
-            
           </div>
           <div class="iconex-two-tone">
             <div class="right"><img class="arrow" src="https://c.animaapp.com/XFA4hqja/img/arrow-1@2x.png" /></div>
@@ -76,12 +133,11 @@
             <div class="overlap-4">
               <div class="group-3">
                 <div class="group-4">
-                  <a href="index.html" class="start-free-link">
+                  <a href="#" class="start-free-link" onclick="showLoginPopup()">
                     <div class="overlap-group-3">
                       <div class="text-wrapper-17">Start Free</div>
                     </div>
                   </a>
-                  
                 </div>
               </div>
               <div class="text-wrapper-18">Secure Your Data Now</div>
@@ -101,5 +157,49 @@
         <img class="iconex-broken-lock" src="https://c.animaapp.com/XFA4hqja/img/iconex-broken-lock-1.svg" />
       </div>
     </div>
+
+    <!-- Dimmed Background -->
+    <div class="dimmed-background" id="dimmed-background" style="display: none;"></div>
+
+    <!-- Login Popup -->
+    <div class="login-popup" id="login-popup">
+      
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button id="login-button">Login</button>
+      <div id="login-error" class="error-message" style="display: none;">Invalid credentials</div>
+    </div>
+
+    <script>
+      // Function to show the login popup
+      function showLoginPopup() {
+        document.getElementById('login-popup').style.display = 'block';
+        document.getElementById('dimmed-background').style.display = 'block'; // Show the dimmed background
+      }
+
+      // Function to handle login
+      document.getElementById('login-button').addEventListener('click', function () {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const loginError = document.getElementById('login-error');
+
+        // Validate credentials
+        if (username === 'DoctorD' && password === '123456') {
+          loginError.style.display = 'none'; // Hide error
+          // Redirect to the database page
+          window.location.href = 'index.html';
+        } else {
+          loginError.style.display = 'block'; // Show error
+        }
+      });
+
+      // Hide the popup and dimmed background when clicking outside the popup
+      document.getElementById('dimmed-background').addEventListener('click', function () {
+        document.getElementById('login-popup').style.display = 'none';
+        this.style.display = 'none'; // Hide the dimmed background
+      });
+    </script>
   </body>
 </html>
+
+

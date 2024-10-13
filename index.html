@@ -1,90 +1,232 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>PatientVault - Register Patient</title>
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!DOCTYPE html>
-    <html>
-      <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="globals.css" />
-        <link rel="stylesheet" href="style.css" />
-      </head>
-      <body>
-        <div class="desktop">
-          <div class="div">
-            <div class="group">
-              <div class="text-wrapper">Hello Dr. D!</div>
-              <a href="home.html" class="sign-out-link">
-                <div class="overlap-group">
-                  <div class="text-wrapper-2">Sign Out</div>
-                </div>
-              </a>
-              <div class="div-wrapper">
-                <div class="text-wrapper-3">PatientVault</div>
-              </div>
-            </div>
-    
-            <div class="text-wrapper-4">Register Patient:</div>
-            <div class="group-wrapper">
-              <div class="overlap-group-wrapper">
-                <div class="overlap-group-2">
-                  <div class="text-wrapper-16">Register</div>
-                  <img class="iconex-broken-plus" src="https://c.animaapp.com/6YJh3miE/img/iconex-broken-plus-1.svg" />
-                </div>
-              </div>
-            </div>
-    
-            <div class="text-wrapper-5">Search Patient:</div>
-            <div class="overlap">
-              <div class="overlap-wrapper">
-                <div class="overlap-group-2">
-                  <div class="text-wrapper-16">Search</div>
-                </div>
-              </div>
-              <img class="iconex-broken-search" src="https://c.animaapp.com/6YJh3miE/img/iconex-broken-search-1.svg" />
-            </div>
-    
-            <div class="group-2">
-              <input class="wallet-input" type="text" placeholder="Insert Wallet Address Here" />
-            </div>
-    
-            <div class="group-3">
-              <input class="wallet-input" type="text" placeholder="Insert Wallet Address Here" />
-            </div>
-    
-            <div class="frame">
-              <div class="text-wrapper-6">PatientVault</div>
-              <div class="text-wrapper-6">Services</div>
-              <div class="text-wrapper-6">Support</div>
-            </div>
-    
-            <img class="line" src="img/line-2.svg" />
-            <img class="img" src="img/line-2.svg" />
-            <div class="text-wrapper-18">Welcome Dr. D!</div>
-          </div>
-    
-          <!-- Footer -->
-          <footer class="footer">
-            <div class="footer-content">
-              <div class="text-wrapper-7">Log In</div>
-              <div class="text-wrapper-8">Services</div>
-              <div class="text-wrapper-9">Support</div>
-              <div class="text-wrapper-10">FAQ</div>
-              <div class="text-wrapper-11">Help</div>
-              <div class="text-wrapper-12">Start Free</div>
-              <div class="text-wrapper-13">Data Ownership</div>
-              <div class="text-wrapper-14">Decentralized Storage</div>
-              <div class="text-wrapper-15">Instant Access</div>
-            </div>
-          </footer>
+    <style>
+      /* Inline CSS for loading overlay */
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        font-family: "Outfit", Helvetica, sans-serif;
+        z-index: 9999;
+        display: none;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+
+      /* Notification styles */
+      .notification {
+        color: white;
+        font-size: 18px;
+        padding: 10px 20px; /* Padding for button effect */
+        border-radius: 5px; /* Rounded corners */
+        background-color: #28a745; /* Bright green background */
+        position: fixed; /* Fixed position */
+        top: 20px; /* Distance from the top */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Center horizontally */
+        display: none; /* Initially hidden */
+        z-index: 1000; /* Ensure it appears on top */
+      }
+    </style>
+</head>
+<body>
+    <div class="desktop">
+      <!-- Header -->
+      <div class="header">
+        <div class="header-left">
+          <div class="text-wrapper-3">PatientVault</div>
         </div>
-      </body>
-    </html>
-    
-    
+        <div class="header-right">
+          <div class="text-wrapper">Hello Dr. D!</div>
+          <a href="home.html" class="sign-out-link">
+            <div class="sign-out-button">Sign Out</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Welcome Section -->
+      <div class="text-wrapper-18">Welcome Dr. D!</div>
+
+      <!-- Register Patient Section -->
+      <div class="section">
+        <div class="text-wrapper-4">Register Patient:</div>
+        <div class="group-wrapper">
+          <input id="wallet-address" class="input-field" type="text" placeholder="Insert Wallet Address Here" />
+          <button id="register-btn" class="action-btn">Register</button>
+        </div>
+        <div id="error-message" class="error-message"></div> <!-- Error message for invalid wallet address -->
+      </div>
+
+      <!-- Patient Data Section Title -->
+      <div class="text-wrapper-4" style="margin-top: 50px;">Patient Data:</div>
+
+      <!-- Dynamic Patient Data Display -->
+      <div id="patient-list" class="patient-list"></div>
+
+      <!-- Loading Overlay -->
+      <div id="loading-overlay" class="loading-overlay">Signing Smart Contract...</div>
+
+      <!-- Notification -->
+      <div class="notification" id="notification">Success!</div> <!-- Notification box -->
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-link">Services</div>
+          <div class="footer-link">Support</div>
+          <div class="footer-link">FAQ</div>
+          <div class="footer-link">Help</div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      let patientCount = 0;
+      const patients = [];
+
+      document.getElementById('register-btn').addEventListener('click', function () {
+        const walletAddress = document.getElementById('wallet-address').value;
+        const errorMessage = document.getElementById('error-message');
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const notification = document.getElementById('notification');
+
+        // Validate the wallet address format
+        const isValidWalletAddress = /^0x[a-fA-F0-9]{40}$/.test(walletAddress);
+        if (!isValidWalletAddress) {
+          errorMessage.textContent = 'Please enter a valid wallet address (e.g., 0x1234567890abcdef1234567890abcdef12345678).';
+          errorMessage.style.display = 'block';
+          return;
+        } else {
+          errorMessage.style.display = 'none'; // Hide error message if valid
+        }
+
+        // Show loading overlay for signing the smart contract
+        loadingOverlay.style.display = 'flex';
+
+        // Simulate signing the smart contract
+        setTimeout(() => {
+          loadingOverlay.style.display = 'none'; // Hide loading overlay
+          
+          // Open patient form after signing
+          openPatientForm(walletAddress); // Pass the wallet address to the patient form
+        }, 1000); // Duration for loading overlay
+      });
+
+      function openPatientForm(walletAddress) {
+        let patientName = prompt("Enter the patient's name:");
+        while (!isValidName(patientName)) {
+          patientName = prompt("Invalid name. Please enter a valid name:");
+        }
+
+        let age = prompt("Enter the patient's age:");
+        while (!isValidAge(age)) {
+          age = prompt("Invalid age. Please enter a valid age (number between 0-120):");
+        }
+
+        let temperature = prompt("Enter the body temperature (e.g., 98.6):");
+        while (!isValidTemperature(temperature)) {
+          temperature = prompt("Invalid temperature. Please enter a valid temperature (between 95-105):");
+        }
+
+        let diagnosis = prompt("Enter the diagnosis:");
+        while (!isValidDiagnosis(diagnosis)) {
+          diagnosis = prompt("Invalid diagnosis. Please enter a valid diagnosis (text only):");
+        }
+
+        patientCount++;
+        const patientData = {
+          id: patientCount,
+          name: patientName,
+          age: parseInt(age, 10),
+          temperature: parseFloat(temperature),
+          diagnosis,
+          walletAddress // Include the wallet address in patient data
+        };
+        patients.push(patientData);
+
+        storePatientData(patientData);
+        displayPatient(patientData);
+
+        // Show success notification
+        notification.style.display = 'block'; // Show success notification
+        setTimeout(() => {
+          notification.style.display = 'none'; // Hide after a short time
+        }, 3000); // Duration for the notification display
+      }
+
+      function isValidName(name) {
+        return name && /^[A-Za-z\s]+$/.test(name); // Letters and spaces only
+      }
+
+      function isValidAge(age) {
+        const num = parseInt(age, 10);
+        return !isNaN(num) && num >= 0 && num <= 120;
+      }
+
+      function isValidTemperature(temp) {
+        const num = parseFloat(temp);
+        return !isNaN(num) && num >= 95 && num <= 105;
+      }
+
+      function isValidDiagnosis(diagnosis) {
+        return diagnosis && /^[A-Za-z\s]+$/.test(diagnosis); // Letters and spaces only
+      }
+
+      function storePatientData(patient) {
+        localStorage.setItem(`patient_${patient.id}`, JSON.stringify(patient));
+      }
+
+      function displayPatient(patient) {
+        const patientList = document.getElementById('patient-list');
+
+        const patientEntry = document.createElement('div');
+        patientEntry.className = 'group-wrapper';
+
+        const nameField = document.createElement('input');
+        nameField.type = 'text';
+        nameField.className = 'input-field patient-input';
+        nameField.value = `Patient ${patient.id}: ${patient.name}`;
+        nameField.readOnly = true;
+
+        const analyzeButton = document.createElement('button');
+        analyzeButton.className = 'action-btn';
+        analyzeButton.textContent = 'Analyze Data';
+        analyzeButton.addEventListener('click', () => {
+          localStorage.setItem('selectedPatient', JSON.stringify(patient));
+          window.location.href = 'insight.html'; // Redirect to the insights page
+        });
+
+        patientEntry.appendChild(nameField);
+        patientEntry.appendChild(analyzeButton);
+        patientList.appendChild(patientEntry);
+      }
+    </script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+

@@ -1,457 +1,149 @@
-.desktop {
-  background-color: #0e032b;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-}
-
-.desktop .div {
-  background-color: #0e032b;
-  width: 1440px;
-  height: 3332px;
-  position: relative;
-}
-
-.desktop .group {
-  position: absolute;
-  width: 1029px;
-  height: 47px;
-  top: 15px;
-  left: 226px;
-}
-
-.desktop .text-wrapper {
-  position: absolute;
-  width: 121px;
-  top: 9px;
-  left: 750px;
-  font-family: "Roboto", Helvetica;
-  font-weight: 400;
-  color: #808cfb;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: 27.5px;
-  white-space: nowrap;
-}
-
-.desktop .overlap-group {
-  position: absolute;
-  width: 139px;
-  height: 47px;
-  top: 0;
-  left: 886px;
-  background-image: url(./img/rectangle-20.svg);
-  background-size: 100% 100%;
-}
-
-.desktop .text-wrapper-2 {
-  position: absolute;
-  width: 90px;
-  top: 9px;
-  left: 25px;
-  font-family: "Roboto", Helvetica;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: 27.5px;
-  white-space: nowrap;
-}
-
-.desktop .div-wrapper {
-  position: absolute;
-  width: 154px;
-  height: 28px;
-  top: 8px;
-  left: 0;
-}
-
-.desktop .text-wrapper-3 {
-  position: absolute;
-  width: 152px;
-  top: 0;
-  left: 0;
-  font-family: "Roboto", Helvetica;
-  font-weight: 800;
-  color: #808cfb;
-  font-size: 24px;
-  letter-spacing: 0;
-  line-height: 27.5px;
-  white-space: nowrap;
-}
-
-.desktop .text-wrapper-4 {
-  position: absolute;
-  width: 504px;
-  top: 441px;
-  left: 468px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: 64px;
-  letter-spacing: 0;
-  line-height: 80px;
-}
-
-.desktop .text-wrapper-5 {
-  position: absolute;
-  width: 461px;
-  top: 769px;
-  left: 489px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: 64px;
-  letter-spacing: 0;
-  line-height: 80px;
-}
-
-.desktop .frame {
-  display: inline-flex;
-  align-items: center;
-  gap: 209px;
-  position: absolute;
-  top: 2199px;
-  left: 231px;
-}
-
-.desktop .text-wrapper-6 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 600;
-  color: #e5e5e5;
-  font-size: 40px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-
-.desktop .text-wrapper-7 {
-  position: absolute;
-  width: 83px;
-  height: 44px;
-  top: 2279px;
-  left: 297px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #e5e5e5;
-  font-size: 27px;
-  letter-spacing: 1.35px;
-  line-height: 27.5px;
-}
-
-.desktop .text-wrapper-8 {
-  position: absolute;
-  width: 109px;
-  height: 44px;
-  top: 2336px;
-  left: 284px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #e5e5e5;
-  font-size: 27px;
-  letter-spacing: 1.35px;
-  line-height: 27.5px;
-}
-
-.desktop .text-wrapper-9 {
-  position: absolute;
-  width: 109px;
-  height: 44px;
-  top: 2393px;
-  left: 288px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #e5e5e5;
-  font-size: 27px;
-  letter-spacing: 1.35px;
-  line-height: 27.5px;
-}
-
-.desktop .text-wrapper-10 {
-  position: absolute;
-  width: 144px;
-  height: 44px;
-  top: 2279px;
-  left: 1030px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #e5e5e5;
-  font-size: 27px;
-  text-align: center;
-  letter-spacing: 1.35px;
-  line-height: 27.5px;
-}
-
-.desktop .text-wrapper-11 {
-  position: absolute;
-  width: 144px;
-  height: 44px;
-  top: 2336px;
-  left: 1030px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #e5e5e5;
-  font-size: 27px;
-  text-align: center;
-  letter-spacing: 1.35px;
-  line-height: 27.5px;
-}
-
-.desktop .text-wrapper-12 {
-  position: absolute;
-  width: 144px;
-  height: 44px;
-  top: 2393px;
-  left: 1030px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #e5e5e5;
-  font-size: 27px;
-  letter-spacing: 1.35px;
-  line-height: 27.5px;
-}
-
-.desktop .text-wrapper-13 {
-  position: absolute;
-  width: 220px;
-  height: 44px;
-  top: 2279px;
-  left: 639px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #e5e5e5;
-  font-size: 27px;
-  letter-spacing: 1.35px;
-  line-height: 27.5px;
-}
-
-.desktop .text-wrapper-14 {
-  position: absolute;
-  width: 302px;
-  height: 44px;
-  top: 2336px;
-  left: 592px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #e5e5e5;
-  font-size: 27px;
-  letter-spacing: 1.35px;
-  line-height: 27.5px;
-}
-
-.desktop .text-wrapper-15 {
-  position: absolute;
-  width: 190px;
-  height: 44px;
-  top: 2393px;
-  left: 645px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #e5e5e5;
-  font-size: 27px;
-  letter-spacing: 1.35px;
-  line-height: 27.5px;
-}
-
-.desktop .iconex-broken-lock {
-  top: 25px;
-  left: 194px;
-  position: absolute;
-  width: 24px;
-  height: 24px;
-}
-
-.desktop .group-wrapper {
-  position: absolute;
-  width: 489px;
-  height: 64px;
-  top: 572px;
-  left: 745px;
-}
-
-.desktop .overlap-group-wrapper {
-  width: 491px;
-  height: 64px;
-}
-
-.desktop .overlap-group-2 {
-  position: relative;
-  width: 489px;
-  height: 64px;
-  background-color: #808cfb;
-  border-radius: 10px;
-}
-
-.desktop .text-wrapper-16 {
-  position: absolute;
-  width: 100px;
-  height: 38px;
-  top: 13px;
-  left: 195px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #ffffff;
-  font-size: 24px;
-  text-align: center;
-  letter-spacing: 1.2px;
-  line-height: 27.5px;
-}
-
-.desktop .iconex-broken-plus {
-  top: 22px;
-  left: 163px;
-  position: absolute;
-  width: 24px;
-  height: 24px;
-}
-
-.desktop .overlap {
-  position: absolute;
-  width: 491px;
-  height: 64px;
-  top: 897px;
-  left: 745px;
-}
-
-.desktop .overlap-wrapper {
-  position: absolute;
-  width: 491px;
-  height: 64px;
-  top: 0;
-  left: 0;
-}
-
-.desktop .iconex-broken-search {
-  top: 20px;
-  left: 175px;
-  position: absolute;
-  width: 24px;
-  height: 24px;
-}
-
-.desktop .group-2 {
-  position: absolute;
-  width: 491px;
-  height: 64px;
-  top: 572px;
-  left: 202px;
-}
-
-.desktop .overlap-2 {
-  position: relative;
-  width: 489px;
-  height: 64px;
-  background-color: #ffffff;
-  border-radius: 10px;
-}
-
-.desktop .text-wrapper-17 {
-  position: absolute;
-  width: 377px;
-  height: 38px;
-  top: 13px;
-  left: 56px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  color: #00000066;
-  font-size: 24px;
-  text-align: center;
-  letter-spacing: 1.2px;
-  line-height: 27.5px;
-}
-
-.desktop .group-3 {
-  position: absolute;
-  width: 491px;
-  height: 64px;
-  top: 897px;
-  left: 202px;
-}
-
-.desktop .line {
-  top: 717px;
-  left: 204px;
-  position: absolute;
-  width: 1032px;
-  height: 3px;
-}
-
-.desktop .img {
-  top: 367px;
-  left: 198px;
-  position: absolute;
-  width: 1032px;
-  height: 3px;
-}
-
-.desktop .text-wrapper-18 {
-  position: absolute;
-  width: 922px;
-  top: 209px;
-  left: 253px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: 128px;
-  letter-spacing: 0;
-  line-height: 80px;
-  white-space: nowrap;
-}
-.wallet-input {
-  width: 489px;
-  height: 64px;
-  background-color: #ffffff;
-  border: none;
-  border-radius: 10px;
-  padding: 0 20px;
-  font-family: "Outfit", Helvetica;
-  font-weight: 500;
-  font-size: 24px;
-  color: #00000066;
-  text-align: center;
-  letter-spacing: 1.2px;
-  line-height: 27.5px;
+/* Reset and global styles */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-.wallet-input::placeholder {
-  color: #00000066;
-}
-
-.wallet-input:focus {
-  outline: none;
-  border: 2px solid #808cfb;
-}
-/* Ensure the entire page takes up the full height */
 html, body {
   height: 100%;
-  margin: 0;
-  padding: 0;
+  font-family: "Outfit", Helvetica, sans-serif;
+  background-color: #0e032b;
+  color: white;
 }
 
-/* Wrapper to make sure everything is contained */
+/* Desktop layout container */
 .desktop {
-  background-color: #0e032b;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Space between content and footer */
-  min-height: 100vh; /* Ensures full height */
-  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-.footer {
-  background-color: #1a1a1a;
+/* Header layout */
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
   padding: 20px;
+}
+
+.header-left {
+  font-size: 24px;
+  font-weight: 800;
+  color: #808cfb;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Sign-out button */
+.sign-out-button {
+  background-color: transparent;
+  color: white;
+  font-family: "Outfit", Helvetica;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Welcome text */
+.text-wrapper-18 {
+  font-size: 72px;
+  font-weight: 800;
+  margin: 50px 0;
   text-align: center;
+}
+
+/* Section titles */
+.text-wrapper-4 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 30px 0;
+  text-align: center;
+}
+
+/* Group wrapper for aligned inputs and buttons */
+.group-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Input field styling */
+.input-field {
+  flex: 1;
+  height: 50px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  color: #00000066;
+  border: none;
+  box-sizing: border-box;
+}
+
+/* Patient input styling */
+.patient-input {
+  width: calc(100% - 165px);
+}
+
+/* Button styling */
+.action-btn {
+  width: 150px;
+  height: 50px;
+  background-color: #6c63ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  background-color: #5a53e6;
+}
+
+/* Patient list container */
+.patient-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+/* Footer styles */
+.footer {
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .footer-content {
   display: flex;
-  justify-content: space-around;
+  gap: 30px;
+}
+
+.footer-link {
+  font-size: 16px;
   color: #e5e5e5;
-  font-family: "Outfit", Helvetica;
-  font-size: 20px;
+  cursor: pointer;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
 }

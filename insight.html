@@ -1,68 +1,240 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Patient Insights</title>
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="insightstyle.css" />
-  </head>
-  <body>
+    <style>
+      body {
+        font-family: "Outfit", Helvetica, sans-serif;
+      }
+
+      .data-box {
+        width: 100%;
+        max-width: 600px;
+        height: 150px;
+        margin-bottom: 20px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        resize: none;
+        background-color: #f0f0f0; /* Light background for the insights box */
+        color: #000; /* Text color */
+      }
+      .loading-message {
+        font-size: 16px;
+        color: gray;
+      }
+      .error-message {
+        color: red;
+        font-weight: bold;
+      }
+      .desktop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 100vh;
+        padding: 20px;
+        background-color: #0e032b; /* Background color */
+        color: white; /* Text color */
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1440px;
+        padding: 20px;
+      }
+      .header-left {
+        font-size: 24px;
+        font-weight: 800;
+        color: #808cfb;
+      }
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .sign-out-button {
+        background-color: transparent;
+        color: white;
+        font-family: "Outfit", Helvetica;
+        font-size: 16px;
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+      }
+      .footer {
+        padding: 50px 0;
+        display: flex;
+        justify-content: center;
+      }
+      .footer-content {
+        display: flex;
+        gap: 30px;
+      }
+      .footer-link {
+        font-size: 16px;
+        color: #e5e5e5;
+        cursor: pointer;
+      }
+      .footer-link:hover {
+        text-decoration: underline;
+      }
+      /* Cursor effect */
+      .cursor {
+        display: inline-block;
+        width: 10px;
+        height: 20px;
+        background-color: black; /* Cursor color */
+        animation: blink 1s step-end infinite; /* Blinking animation */
+        margin-left: 2px; /* Space between text and cursor */
+      }
+      @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+      }
+      /* Notification styles */
+      .notification {
+        color: white;
+        font-size: 18px;
+        padding: 10px 20px; /* Padding for button effect */
+        border-radius: 5px; /* Rounded corners */
+        background-color: #28a745; /* Bright green background */
+        position: fixed; /* Fixed position */
+        top: 20px; /* Distance from the top */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%); /* Center horizontally */
+        display: none; /* Initially hidden */
+        z-index: 1000; /* Ensure it appears on top */
+      }
+    </style>
+</head>
+<body>
     <div class="desktop">
-      <div class="div">
-        <div class="group">
-          <div class="text-wrapper">Hello Dr. D!</div>
-          <div class="overlap-group"><div class="text-wrapper-2">Sign Out</div></div>
-          <div class="div-wrapper"><div class="text-wrapper-3">PatientVault</div></div>
-        </div>
-        <div class="text-wrapper-4">Patient Data:</div>
-        <div class="text-wrapper-5">Patient Insights:</div>
-        <div class="frame">
-          <div class="text-wrapper-6">PatientVault</div>
-          <div class="text-wrapper-6">Services</div>
-          <div class="text-wrapper-6">Support</div>
-        </div>
-        <div class="text-wrapper-7">Log In</div>
-        <div class="text-wrapper-8">Services</div>
-        <div class="text-wrapper-9">Support</div>
-        <div class="text-wrapper-10">FAQ</div>
-        <div class="text-wrapper-11">Help</div>
-        <div class="text-wrapper-12">Start Free</div>
-        <div class="text-wrapper-13">Data Ownership</div>
-        <div class="text-wrapper-14">Decentralized Storage</div>
-        <div class="text-wrapper-15">Instant Access</div>
-        <img class="iconex-broken-lock" src="https://c.animaapp.com/XFA4hqja/img/iconex-broken-lock-1.svg" />
-        <div class="overlap-wrapper">
-          <div class="overlap">
-            <div class="text-wrapper-16">Allergies: Penicillin</div>
-            <div class="text-wrapper-17">Diagnosis: Hypertension</div>
-            <div class="text-wrapper-18">Gender: Male</div>
-            <div class="text-wrapper-19">Age: 45</div>
-            <div class="text-wrapper-20">Name: John Doe</div>
-            <div class="text-wrapper-21">Patient ID: 001</div>
-            <div class="text-wrapper-22">Patient Record 1</div>
-          </div>
-        </div>
-        <div class="condition-wrapper">
-          <p class="condition">
-            Condition: Hypertension, treated with Lisinopril. Needs regular blood pressure monitoring and follow-ups to
-            ensure effectiveness.<br />Allergy: Penicillin—alternative antibiotics required for infections.<br />Recommendations:
-            Incorporate lifestyle changes (diet, exercise), check cholesterol and blood sugar periodically, and monitor
-            kidney health.<br />Risk: Increased cardiovascular risk; consider heart check-ups if there&#39;s a family
-            history.
-          </p>
-        </div>
-        <img class="line" src="img/line-2.svg" />
-        <img class="img" src="img/line-2.svg" />
-        <img class="line-2" src="img/line-2.svg" />
-        <div class="text-wrapper-23">Patient Analysis</div>
-        <div class="overlap-group-wrapper">
-          <a href="index.html" style="text-decoration: none;">
-            <div class="overlap-2">
-              <div class="text-wrapper-24">Return to Records</div>
+        <div class="header">
+            <div class="header-left">
+                <div class="text-wrapper-3">PatientVault</div>
             </div>
-          </a>
-          
+            <div class="header-right">
+                <div class="text-wrapper">Hello Dr. D!</div>
+                <a href="index.html" class="sign-out-link">
+                    <div class="sign-out-button">Return to Records</div>
+                </a>
+            </div>
         </div>
-      </div>
+
+        <div class="content">
+            <div class="text-wrapper-4">Patient Data:</div>
+            <textarea id="patient-data-box" class="data-box" readonly></textarea>
+
+            <div class="text-wrapper-5">Patient Insights:</div>
+            <textarea id="insights-box" class="data-box" readonly></textarea>
+            <span class="cursor"></span> <!-- Blinking cursor element -->
+
+            <div id="loading-message" class="loading-message"></div>
+            <div id="error-message" class="error-message"></div>
+            <div class="notification" id="notification">Insights complete!</div> <!-- Notification -->
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-link">Services</div>
+                <div class="footer-link">Support</div>
+                <div class="footer-link">FAQ</div>
+                <div class="footer-link">Help</div>
+            </div>
+        </footer>
     </div>
-  </body>
+
+    <script>
+        // Retrieve patient data from local storage
+        const patientData = JSON.parse(localStorage.getItem("selectedPatient"));
+
+        // Check if patient data exists
+        if (patientData) {
+            const patientDataBox = document.getElementById("patient-data-box");
+            const insightsBox = document.getElementById("insights-box");
+            const loadingMessage = document.getElementById("loading-message");
+            const errorMessage = document.getElementById("error-message");
+            const notification = document.getElementById("notification");
+
+            // Display patient data
+            patientDataBox.value = `Name: ${patientData.name}\nAge: ${patientData.age}\nTemperature: ${patientData.temperature} °F\nDiagnosis: ${patientData.diagnosis}`;
+
+            // Dynamic insights for the patient based on their name with randomized options
+            const insights = [
+                [
+                    `${patientData.name} should stay hydrated and get plenty of rest.`,
+                    `Ensure ${patientData.name} eats nutritious meals for recovery.`,
+                    `It's important for ${patientData.name} to take breaks and avoid stress.`,
+                    `Encourage ${patientData.name} to follow up if symptoms persist.`
+                ],
+                [
+                    `Maintain a balanced diet for ${patientData.name} during recovery.`,
+                    `Regular monitoring of ${patientData.name}'s symptoms is essential.`,
+                    `Encourage ${patientData.name} to practice relaxation techniques.`,
+                    `If there are any concerns, contact a healthcare provider.`
+                ],
+                [
+                    `Encourage ${patientData.name} to stay active with light exercises.`,
+                    `Adequate sleep is crucial for ${patientData.name}'s recovery.`,
+                    `Consider discussing any medication options for ${patientData.name} with a pharmacist.`,
+                    `Remind ${patientData.name} to stay connected with friends and family.`
+                ]
+            ];
+
+            // Randomly select one set of insights
+            const selectedInsights = insights[Math.floor(Math.random() * insights.length)];
+
+            // Function to simulate typing effect with individual letter delay
+            function typeInsights(insights) {
+                const insightsBox = document.getElementById("insights-box");
+                insightsBox.value = ""; // Clear the box
+                let lineIndex = 0; // Current line index
+                let charIndex = 0; // Current character index
+
+                function typeNextCharacter() {
+                    if (lineIndex < insights.length) {
+                        const currentLine = insights[lineIndex];
+
+                        // If we reach the end of the current line, move to the next line
+                        if (charIndex < currentLine.length) {
+                            insightsBox.value += currentLine[charIndex]; // Add the next character
+                            charIndex++;
+                            setTimeout(typeNextCharacter, 30); // Typing speed (30 ms per character)
+                        } else {
+                            // Move to the next line
+                            insightsBox.value += '\n'; // Add a new line
+                            lineIndex++;
+                            charIndex = 0; // Reset character index for the new line
+                            setTimeout(typeNextCharacter, 200); // Pause before starting the next line
+                        }
+                    } else {
+                        // Show notification when done
+                        notification.style.display = "block"; // Show the notification
+                    }
+                }
+
+                typeNextCharacter(); // Start typing
+            }
+
+            // Call the typing function with the selected insights
+            typeInsights(selectedInsights);
+        } else {
+            alert("No patient data found. Redirecting to Records.");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
 </html>
+
+
+
+
+
+
