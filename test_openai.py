@@ -1,7 +1,7 @@
 from openai import OpenAI
 import os
 
-client = OpenAI(api_key=os.getenv("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"))
+
 
 
 # Use your API key securely
